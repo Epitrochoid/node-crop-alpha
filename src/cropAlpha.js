@@ -1,6 +1,6 @@
 const Promise = require('bluebird')
 
-const PNG = require('pngjs').PNG
+const { PNG } = require('pngjs')
 const Jimp = Promise.promisifyAll(require('jimp'))
 
 function getCropDimensions(imagePixelData, height, width) {
@@ -68,7 +68,7 @@ module.exports = async function cropAlpha(imageBuffer) {
   const image = await Jimp.readAsync(imageBuffer)
 
   const cropDimensions = getCropDimensions(imageData.data, imageData.width, imageData.height)
-  image.crop(cropDimensions.x, cropDimensions.y, cropDimensions.width, cropDimensions.height))
+  image.crop(cropDimensions.x, cropDimensions.y, cropDimensions.width, cropDimensions.height)
 
   Promise.promisifyAll(image)
   const imageOut = await image.getBufferAsync(Jimp.MIME_PNG)
