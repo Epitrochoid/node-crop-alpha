@@ -53,12 +53,12 @@ function getCropDimensions(imagePixelData, height, width) {
       }
     }
   }
-  return [
-    left,
-    above,
-    right - left,
-    below - above
-  ]
+  return { 
+    x: left,
+    y: above,
+    width: right - left,
+    height: below - above
+  }
 }
 
 module.exports = async function cropAlpha(imageBuffer) {
@@ -68,18 +68,13 @@ module.exports = async function cropAlpha(imageBuffer) {
   const image = await Jimp.readAsync(imageBuffer)
 
   const cropDimensions = getCropDimensions(imageData.data, imageData.width, imageData.height)
-  image.crop(...cropDimensions)
+  image.crop(cropDimensions.x, cropDimensions.y, cropDimensions.width, cropDimensions.height))
 
   Promise.promisifyAll(image)
   const imageOut = await image.getBufferAsync(Jimp.MIME_PNG)
 
   return {
-    sourceDimensions: {
-      x: cropDimensions[0],
-      y: cropDimensions[1],
-      width: cropDimensions[2],
-      height: cropDimensions[3]
-    },
+    sourceDimensions: cropDimensions,
     image: imageOut
   }
 }
