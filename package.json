@@ -1,8 +1,21 @@
 {
   "dependencies": {
     "bluebird": "^3.5.1",
+    "gulp": "^3.9.1",
+    "gulp-folders": "^1.1.0",
     "jimp": "^0.2.28",
+    "lodash.zipwith": "^4.2.0",
+    "path": "^0.12.7",
     "pngjs": "^3.3.1",
-    "sharp": "^0.18.4"
-  }
+    "sharp": "^0.18.4",
+    "through2": "^2.0.3",
+    "vinyl": "^2.1.0"
+  },
+  "name": "node-texturemapper",
+  "version": "1.0.0",
+  "main": "gulp-texturemapper.js",
+  "repository": "https://github.com/Epitrochoid/node-texturemapper.git",
+  "author": "Mabry Cervin <mabry.cervin@gmail.com>",
+  "license": "Apache",
+  "private": false
 }
