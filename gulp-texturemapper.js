@@ -65,5 +65,8 @@ module.exports = function(file, opt) {
     Promise.resolve(pack()).asCallback(cb)
   }
 
+  // Reset before the next directory gets processed
+  fileList = []
+
   return through2.obj(collectImages, endStream)
 }
