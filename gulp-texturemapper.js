@@ -11,7 +11,7 @@ const cropAlpha = require('./src/cropAlpha')
 const packImages = require('./src/packImages')
 const genAtlasJson = require('./src/genAtlasJson')
 
-const fileList = []
+let fileList = []
 let latestFile
 
 function attachFrameName(imageObject, fileName) {
