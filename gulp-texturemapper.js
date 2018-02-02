@@ -57,16 +57,18 @@ module.exports = function(file, opt) {
       textureFile.contents = await textureAtlas
       textureFile.path = path.join(latestFile.base, 'texture-atlas.png')
 
+      // Reset before the next directory gets processed
+      fileList = []
+
       this.push(jsonFile)
       this.push(textureFile)
       cb()
     }
 
+
     Promise.resolve(pack()).asCallback(cb)
   }
 
-  // Reset before the next directory gets processed
-  fileList = []
 
   return through2.obj(collectImages, endStream)
 }
